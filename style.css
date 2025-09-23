@@ -1,229 +1,310 @@
-body {
-    font-family: 'Comfortaa';font-size: 22px;
-    background-color: #E0BBE4;
-    padding: 0;
-    margin: 0;
+/* ========= Core / Reset ========= */
+:root{
+  --bg-pink: #E0BBE4;
+  --pink-1: #FEC8D8;
+  --pink-2: #FFC8D8; /* apenas reserva */
+  --peach:   #FFDFD3;
+  --lav:     #957DAD;
+  --white:   #ffffff;
 }
 
-.hero {
-    padding: 8% 16%;
+*{ box-sizing: border-box; }
+
+html, body{
+  height: 100%;
 }
 
-.in-container {
-    display: inline-block;
+body{
+  font-family: 'Comfortaa', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 16px;
+  background-color: var(--bg-pink);
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* ========= Helpers ========= */
+.section-pad{
+  padding: clamp(2rem, 6vw, 8rem) clamp(1rem, 6vw, 8rem);
+}
+
+.media{
+  width: 100%;
+  max-width: 720px;
+  margin: 1rem 0;
+}
+
+.media video,
+.media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ========= Hero / Typing ========= */
+.hero{
+  padding: clamp(2rem, 8vw, 10rem) clamp(1rem, 8vw, 10rem);
+}
+
+.in-container{
+  display: block; /* empilha no mobile */
 }
 
 .in-container .hey{
-    font-size: 30px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    border-right: 5px solid;
-    width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-            typing 2s steps(13),
-            cursor .4s step-end infinite alternate;
-    animation-fill-mode: forwards ;
+  font-size: clamp(1.125rem, 3.8vw, 1.875rem); /* 18–30px */
+  font-weight: 900;
+  letter-spacing: .06em;
+  border-right: 4px solid;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typing-hey 2s steps(13),
+    cursor .6s step-end infinite alternate;
+  animation-fill-mode: forwards;
 }
 
-@keyframes cursor {
-    50% { border-color: transparent;}
-}
+@keyframes cursor { 50%{ border-color: transparent; } }
 
-@keyframes typing {
-    from { width: 0;}
-    to {width: 100%; border-color: transparent;}
+@keyframes typing-hey {
+  from { width: 0; }
+  to   { width: 100%; border-color: transparent; }
 }
 
 .in-container .hap{
-    font-weight: 900;
-    letter-spacing: 1px;
-    border-right: 5px solid;
-    width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    
-    animation:
-            typing 2s steps(14),
-            cursor .4s step-end infinite alternate;
-    animation-delay: 2s;
-    animation-fill-mode: forwards ;
-    color: #ffffff;
-    font-size: 110px;
-    letter-spacing: 3px;
-    margin-block-start: 60px;
-    margin-block-end: 60px;
+  font-weight: 900;
+  border-right: 4px solid;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:
+    typing-hap 2s steps(14),
+    cursor .6s step-end infinite alternate;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  color: var(--white);
+  font-size: clamp(2rem, 10vw, 6.875rem); /* ~32–110px */
+  letter-spacing: .12em;
+  margin-block: clamp(1rem, 8vw, 3.5rem);
+}
+
+@keyframes typing-hap {
+  from { width: 0; }
+  to   { width: 100%; border-color: transparent; }
+}
+
+.in-container .i,
+.in-container .so{
+  font-weight: 900;
+  border-right: 4px solid;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: clamp(1rem, 2.8vw, 1.25rem); /* 16–20px */
 }
 
 .in-container .i{
-    font-weight: 900;
-    border-right: 5px solid;
-    width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-            typing 6s steps(63),
-            cursor .4s step-end infinite alternate;
-    animation-delay: 4s;
-    animation-fill-mode: forwards ;
-    font-size: 25px;
+  animation:
+    typing-i 6s steps(63),
+    cursor .6s step-end infinite alternate;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes typing-i {
+  from { width: 0; }
+  to   { width: 100%; border-color: transparent; }
 }
 
 .in-container .so{
-    font-weight: 900;
-    border-right: 5px solid;
-    width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation:
-            typing 3s steps(30),
-            cursor .4s step-end infinite alternate;
-    animation-delay: 10s;
-    animation-fill-mode: forwards ;
-    font-size: 25px;
+  animation:
+    typing-so 3s steps(30),
+    cursor .6s step-end infinite alternate;
+  animation-delay: 10s;
+  animation-fill-mode: forwards;
 }
 
+@keyframes typing-so {
+  from { width: 0; }
+  to   { width: 100%; border-color: transparent; }
+}
 
-.trans-p-c {
-    height: 200px;
-    background-image: linear-gradient(to bottom, rgba(224, 187, 228), rgba(254, 200, 216));
+/* Usuários que preferem reduzir movimento */
+@media (prefers-reduced-motion: reduce){
+  .in-container .hey,
+  .in-container .hap,
+  .in-container .i,
+  .in-container .so{
+    animation: none;
+    border-right: 0;
     width: 100%;
+    white-space: normal;
+  }
 }
 
-.trans-l-p {
-    height: 200px;
-    background-image: linear-gradient(to bottom,rgba(255, 223, 211), rgba(224, 187, 228));
-    width: 100%;
+/* ========= Transições em faixa ========= */
+.trans-p-c,
+.trans-l-p,
+.trans-p-la,
+.trans-c-l{
+  height: clamp(80px, 12vw, 200px);
+  width: 100%;
 }
 
-.trans-p-la {
-    height: 200px;
-    background-image: linear-gradient(to bottom, rgba(224, 187, 228), rgba(254, 200, 216));
-    width: 100%;
+.trans-p-c{  background-image: linear-gradient(to bottom, rgba(224,187,228), rgba(254,200,216)); }
+.trans-l-p{  background-image: linear-gradient(to bottom, rgba(255,223,211), rgba(224,187,228)); }
+.trans-p-la{ background-image: linear-gradient(to bottom, rgba(224,187,228), rgba(254,200,216)); }
+.trans-c-l{  background-image: linear-gradient(to bottom, rgba(254,200,216), rgba(255,223,211)); }
+
+/* ========= Containers temáticos ========= */
+.container-cotton{
+  background-color: var(--pink-1);
+}
+.container-lum{
+  background-color: var(--peach);
+  position: relative;
+}
+.container-lavender{
+  background-color: var(--pink-1);
 }
 
-.trans-c-l {
-    height: 200px;
-    background-image: linear-gradient(to bottom, rgba(254, 200, 216), rgba(255, 223, 211));
-    width: 100%;
+.container,
+.container-cotton,
+.container-lum,
+.container-lavender{
+  padding: clamp(2rem, 6vw, 8rem);
 }
 
-.container-cotton {
-    background-color: #FEC8D8;
-    padding: 16% 16%;
+/* Tipografia padrão de parágrafos nessas seções */
+.container p,
+.container-cotton p,
+.container-lum p{
+  font-size: clamp(1rem, 2.4vw, 1.25rem); /* 16–20px */
 }
 
-.container-cotton p{
-    font-size: 25px;
+/* ========= Relógio ========= */
+.clock-holder{
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: clamp(.25rem, 1vw, .75rem);
+  margin: clamp(1rem, 6vw, 3.5rem) 0;
 }
 
 .container-cotton font{
-    font-size: 120px;
-    margin-right: 10px;
-    font-weight: 900;
-    color: white;
+  font-size: clamp(2rem, 10vw, 7.5rem); /* 32–120px */
+  margin-right: 8px;
+  font-weight: 900;
+  color: var(--white);
 }
 
-.clock-holder {
-    margin: 60px 0;
+/* ========= Imagem + coração + vídeo (Seção three) ========= */
+.bori{
+  width: min(65vw, 380px);
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
-.container-lum {
-    background-color: #FFDFD3;
-    padding: 16% 8%;
-    position: relative;
+.love{
+  width: min(60vw, 320px);
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%) rotate(-18deg);
+  opacity: .9;
+  pointer-events: none;
 }
 
-.bori {
-    height: 400px;
-    width: 300px;
-    margin-left: 70%;
-    
+/* video já fica responsivo via .media */
+
+/* ========= Cards ========= */
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 4vw, 2rem);
+  margin-top: clamp(1rem, 6vw, 3.5rem);
 }
 
-.container-lum video {
-    margin-top: -200px;
+.card{
+  background-color: var(--lav);
+  color: #fff;
+  padding: clamp(1rem, 3.5vw, 2.5rem);
+  border-radius: 16px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .45s ease, transform .25s ease;
+  min-height: 260px; /* mais flexível que height fixa */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-.love {
-    height: 150px;
-    width: 400px;
-    position: absolute;
-    left: 37%;
-    top: 40%;
-    transform: rotate(-20deg);
-}
+.card:hover{ transform: translateY(-4px); }
 
-.container-lum p {
-    font-size: 30px;
-}
-
-.container {
-    padding: 16% 16%;
-}
-
-.container p{
-    font-size: 25px;
-}
-
-.card {
-    height: 350px;
-    width: 250px;
-    background-color: #957DAD;
-    color: white;
-    padding: 40px;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.5s;
-}
-
-.card.fade-out {
-    opacity: 0;
-}
-
-.card-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 60px;
-}
+.card.fade-out{ opacity: 0.12; }
 
 .card h2{
-    width: fit-content;
-    font-size: 50px;
-    display: none;
+  font-size: clamp(1.25rem, 4.5vw, 2.25rem); /* 20–36px */
+  margin: 0 0 .5rem 0;
+  display: none;
 }
 
 .card p{
-    display: none;
+  display: none;
+  font-size: clamp(.95rem, 2.6vw, 1.125rem);
+  margin: 0;
 }
 
-.card font {
-    margin-top: 120px;
-    display: block;
-    font-size: 80px;
-    text-align: center;
+.card font{
+  display: block;
+  font-size: clamp(2.5rem, 12vw, 5rem); /* ? */
+  line-height: 1;
 }
 
-.card.show font{
-    display: none;
+.card.show font{ display: none; }
+.card.show h2,
+.card.show p{ display: block; }
+
+/* ========= Texto corrido e imagem final ========= */
+.birthday-wishes{
+  text-align: justify;
 }
 
-.card.show p, .card.show h2{
-    display: block;
+.cake{
+  width: min(70vw, 480px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
 }
 
-.container-lavender {
-    background-color: #FEC8D8;
-    padding: 16%;
+/* ========= Responsividade por breakpoints ========= */
+
+/* >= 768px (tablets) */
+@media (min-width: 768px){
+  .in-container{ display: inline-block; } /* lado a lado quando couber */
+  .love{ top: 36%; }
 }
 
-.birthday-wishes {
-    text-align: justify;
+/* >= 992px (desktops médios) */
+@media (min-width: 992px){
+  .bori{ width: min(42vw, 420px); }
+  .love{ width: min(40vw, 360px); top: 34%; }
 }
 
-.cake {
-   
-    height: 450px;
-    margin-left: 30%;
+/* >= 1200px (desktops grandes) */
+@media (min-width: 1200px){
+  .hero{ padding-left: 12vw; padding-right: 12vw; }
+  .container, .container-cotton, .container-lum, .container-lavender{ padding-left: 12vw; padding-right: 12vw; }
+}
+
+/* Pequenos reforços para telas bem estreitas */
+@media (max-width: 360px){
+  .in-container .hap{ letter-spacing: .06em; }
+  .container-cotton font{ margin-right: 4px; }
 }
